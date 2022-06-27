@@ -44,7 +44,5 @@ package-lock.json
 
 # Browser Version
 **/browser/lib/*.js
-# ES5 Version
-dist/
 # ESM Version
 es/
