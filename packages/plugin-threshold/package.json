@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
-    "@jimp/utils": "link:../utils"
+    "@jimp/utils": "file:../utils"
   },
   "peerDependencies": {
     "@jimp/custom": ">=0.3.5",
@@ -29,11 +29,11 @@
     "@jimp/plugin-resize": ">=0.8.0"
   },
   "devDependencies": {
-    "@jimp/custom": "link:../custom",
-    "@jimp/jpeg": "link:../type-jpeg",
-    "@jimp/plugin-color": "link:../plugin-color",
-    "@jimp/plugin-resize": "link:../plugin-resize",
-    "@jimp/test-utils": "link:../test-utils"
+    "@jimp/custom": "file:../custom",
+    "@jimp/jpeg": "file:../type-jpeg",
+    "@jimp/plugin-color": "file:../plugin-color",
+    "@jimp/plugin-resize": "file:../plugin-resize",
+    "@jimp/test-utils": "file:../test-utils"
   },
   "publishConfig": {
     "access": "public"

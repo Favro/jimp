@@ -18,11 +18,11 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
-    "@jimp/bmp": "link:../type-bmp",
-    "@jimp/gif": "link:../type-gif",
-    "@jimp/jpeg": "link:../type-jpeg",
-    "@jimp/png": "link:../type-png",
-    "@jimp/tiff": "link:../type-tiff",
+    "@jimp/bmp": "file:../type-bmp",
+    "@jimp/gif": "file:../type-gif",
+    "@jimp/jpeg": "file:../type-jpeg",
+    "@jimp/png": "file:../type-png",
+    "@jimp/tiff": "file:../type-tiff",
     "timm": "^1.6.1"
   },
   "peerDependencies": {

@@ -21,15 +21,15 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
-    "@jimp/utils": "link:../utils",
+    "@jimp/utils": "file:../utils",
     "pngjs": "^3.3.3"
   },
   "peerDependencies": {
     "@jimp/custom": ">=0.3.5"
   },
   "devDependencies": {
-    "@jimp/custom": "link:../custom",
-    "@jimp/test-utils": "link:../test-utils"
+    "@jimp/custom": "file:../custom",
+    "@jimp/test-utils": "file:../test-utils"
   },
   "publishConfig": {
     "access": "public"

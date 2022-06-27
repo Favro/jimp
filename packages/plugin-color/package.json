@@ -21,13 +21,13 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
-    "@jimp/utils": "link:../utils",
+    "@jimp/utils": "file:../utils",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
-    "@jimp/custom": "link:../custom",
-    "@jimp/test-utils": "link:../test-utils",
-    "@jimp/types": "link:../types"
+    "@jimp/custom": "file:../custom",
+    "@jimp/test-utils": "file:../test-utils",
+    "@jimp/types": "file:../types"
   },
   "peerDependencies": {
     "@jimp/custom": ">=0.3.5"

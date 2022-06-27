@@ -59,9 +59,9 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
-    "@jimp/custom": "link:../custom",
-    "@jimp/plugins": "link:../plugins",
-    "@jimp/types": "link:../types",
+    "@jimp/custom": "file:../custom",
+    "@jimp/plugins": "file:../plugins",
+    "@jimp/types": "file:../types",
     "regenerator-runtime": "^0.13.3"
   },
   "devDependencies": {
@@ -71,7 +71,7 @@
     "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
-    "@jimp/test-utils": "link:../test-utils",
+    "@jimp/test-utils": "file:../test-utils",
     "babel-eslint": "^10.0.3",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-istanbul": "^5.2.0",
