@@ -1,5 +1,3 @@
-import fileType from 'file-type';
-
 import EXIFParser from 'exif-parser';
 import { throwError } from '@jimp/utils';
 
@@ -7,12 +5,19 @@ import * as constants from '../constants';
 import * as MIME from './mime';
 import promisify from './promisify';
 
-function getMIMEFromBuffer(buffer, path) {
-  const fileTypeFromBuffer = fileType(buffer);
+const fileTypeFromBuffer = async buf => {
+  fileTypeFromBuffer._cached =
+    fileTypeFromBuffer._cached ||
+    (await eval("import('file-type')")).fileTypeFromBuffer;
+  return fileTypeFromBuffer._cached(buf);
+};
 
-  if (fileTypeFromBuffer) {
+async function getMIMEFromBuffer(buffer, path) {
+  const fileType = await fileTypeFromBuffer(buffer);
+
+  if (fileType) {
     // If fileType returns something for buffer, then return the mime given
-    return fileTypeFromBuffer.mime;
+    return fileType.mime;
   }
 
   if (path) {
@@ -150,36 +155,45 @@ function exifRotate(img) {
 
 // parses a bitmap from the constructor to the JIMP bitmap property
 export function parseBitmap(data, path, cb) {
-  const mime = getMIMEFromBuffer(data, path);
+  getMIMEFromBuffer(data, path).then(
+    mime => {
+      if (typeof mime !== 'string') {
+        return cb(new Error('Could not find MIME for Buffer <' + path + '>'));
+      }
 
-  if (typeof mime !== 'string') {
-    return cb(new Error('Could not find MIME for Buffer <' + path + '>'));
-  }
+      this._originalMime = mime.toLowerCase();
 
-  this._originalMime = mime.toLowerCase();
+      try {
+        const mime = this.getMIME();
 
-  try {
-    const mime = this.getMIME();
+        if (this.constructor.decoders[mime]) {
+          this.bitmap = this.constructor.decoders[mime](data);
+        } else {
+          return throwError.call(this, 'Unsupported MIME type: ' + mime, cb);
+        }
+      } catch (error) {
+        return cb.call(this, error, this);
+      }
 
-    if (this.constructor.decoders[mime]) {
-      this.bitmap = this.constructor.decoders[mime](data);
-    } else {
-      return throwError.call(this, 'Unsupported MIME type: ' + mime, cb);
+      try {
+        this._exif = EXIFParser.create(data).parse();
+        exifRotate(this); // EXIF data
+      } catch (error) {
+        /* meh */
+      }
+
+      cb.call(this, null, this);
+
+      return this;
+    },
+    error => {
+      cb(
+        new Error(
+          'Could not find MIME for Buffer <' + path + '> ' + error.message
+        )
+      );
     }
-  } catch (error) {
-    return cb.call(this, error, this);
-  }
-
-  try {
-    this._exif = EXIFParser.create(data).parse();
-    exifRotate(this); // EXIF data
-  } catch (error) {
-    /* meh */
-  }
-
-  cb.call(this, null, this);
-
-  return this;
+  );
 }
 
 function compositeBitmapOverBackground(Jimp, image) {
