@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@jimp/core": "file:../core",
     "@jimp/custom": "file:../custom",
     "chalk": "^2.4.1",
     "jimp": "^0.16.1",

@@ -5,15 +5,15 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Jimp = void 0;
+exports.donutJGD = donutJGD;
+exports.getTestDir = getTestDir;
 exports.hasOwnProp = hasOwnProp;
 exports.hashForEach = hashForEach;
-exports.getTestDir = getTestDir;
 exports.isWeb = isWeb;
 exports.jgdReadableMatrix = jgdReadableMatrix;
-exports.donutJGD = donutJGD;
-exports.mkJGD = mkJGD;
 exports.jgdToStr = jgdToStr;
-exports.Jimp = void 0;
+exports.mkJGD = mkJGD;
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 

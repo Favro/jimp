@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createImage = exports.manipulateImage = void 0;
 var jimp_1 = __importDefault(require("jimp"));
 var log_1 = require("./log");
 var load_font_1 = require("./load-font");

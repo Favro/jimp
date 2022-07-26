@@ -1,16 +1,14 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _typeof3 = require("@babel/runtime/helpers/typeof");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.addConstants = addConstants;
 exports.addJimpMethods = addJimpMethods;
-exports.jimpEvMethod = jimpEvMethod;
-exports.jimpEvChange = jimpEvChange;
 Object.defineProperty(exports, "addType", {
   enumerable: true,
   get: function get() {
@@ -18,6 +16,8 @@ Object.defineProperty(exports, "addType", {
   }
 });
 exports["default"] = void 0;
+exports.jimpEvChange = jimpEvChange;
+exports.jimpEvMethod = jimpEvMethod;
 
 var _construct2 = _interopRequireDefault(require("@babel/runtime/helpers/construct"));
 
@@ -27,13 +27,13 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
-
-var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
-
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
@@ -68,6 +68,14 @@ var MIME = _interopRequireWildcard(require("./utils/mime"));
 var _imageBitmap = require("./utils/image-bitmap");
 
 var constants = _interopRequireWildcard(require("./constants"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof3(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 var alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_'; // an array storing the maximum string length of hashes at various bases
 // 0 and 1 do not exist as possible hash lengths
@@ -199,10 +207,10 @@ var emptyBitmap = {
  * @param {function(Error, Jimp)} cb (optional) a function to call when the image is parsed to a bitmap
  */
 
-var Jimp =
-/*#__PURE__*/
-function (_EventEmitter) {
+var Jimp = /*#__PURE__*/function (_EventEmitter) {
   (0, _inherits2["default"])(Jimp, _EventEmitter);
+
+  var _super = _createSuper(Jimp);
 
   // An object representing a bitmap in memory, comprising:
   //  - data: a buffer of the bitmap data
@@ -220,7 +228,7 @@ function (_EventEmitter) {
     }
 
     (0, _classCallCheck2["default"])(this, Jimp);
-    _this = (0, _possibleConstructorReturn2["default"])(this, (0, _getPrototypeOf2["default"])(Jimp).call(this));
+    _this = _super.call(this);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "bitmap", emptyBitmap);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "_background", 0x00000000);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "_originalMime", Jimp.MIME_PNG);
@@ -599,14 +607,14 @@ function (_EventEmitter) {
     }
   }, {
     key: "getBase64",
-
+    value:
     /**
      * Converts the image to a base 64 string
      * @param {string} mime the mime type of the image data to be created
      * @param {function(Error, Jimp)} cb a Node-style function to call with the buffer as the second argument
      * @returns {Jimp} this for chaining of methods
      */
-    value: function getBase64(mime, cb) {
+    function getBase64(mime, cb) {
       if (mime === Jimp.AUTO) {
         // allow auto MIME detection
         mime = this.getMIME();
@@ -632,14 +640,14 @@ function (_EventEmitter) {
     }
   }, {
     key: "hash",
-
+    value:
     /**
      * Generates a perceptual hash of the image <https://en.wikipedia.org/wiki/Perceptual_hashing>. And pads the string. Can configure base.
      * @param {number} base (optional) a number between 2 and 64 representing the base for the hash (e.g. 2 is binary, 10 is decimal, 16 is hex, 64 is base 64). Defaults to 64.
      * @param {function(Error, Jimp)} cb (optional) a callback for when complete
      * @returns {string} a string representing the hash
      */
-    value: function hash(base, cb) {
+    function hash(base, cb) {
       base = base || 64;
 
       if (typeof base === 'function') {
@@ -701,7 +709,7 @@ function (_EventEmitter) {
 
   }, {
     key: "getPixelIndex",
-
+    value:
     /**
      * Returns the offset of a pixel in the bitmap buffer
      * @param {number} x the x coordinate
@@ -710,7 +718,7 @@ function (_EventEmitter) {
      * @param {number} cb (optional) a callback for when complete
      * @returns {number} the index of the pixel or -1 if not found
      */
-    value: function getPixelIndex(x, y, edgeHandling, cb) {
+    function getPixelIndex(x, y, edgeHandling, cb) {
       var xi;
       var yi;
 
@@ -800,7 +808,7 @@ function (_EventEmitter) {
     }
   }, {
     key: "setPixelColor",
-
+    value:
     /**
      * Returns the hex colour value of a pixel
      * @param {number} hex color to set
@@ -809,7 +817,7 @@ function (_EventEmitter) {
      * @param {function(Error, Jimp)} cb (optional) a callback for when complete
      * @returns {number} the index of the pixel or -1 if not found
      */
-    value: function setPixelColor(hex, x, y, cb) {
+    function setPixelColor(hex, x, y, cb) {
       if (typeof hex !== 'number' || typeof x !== 'number' || typeof y !== 'number') return _utils.throwError.call(this, 'hex, x and y must be numbers', cb); // round input
 
       x = Math.round(x);
@@ -825,12 +833,12 @@ function (_EventEmitter) {
     }
   }, {
     key: "hasAlpha",
-
+    value:
     /**
      * Determine if the image contains opaque pixels.
      * @return {boolean} hasAlpha whether the image contains opaque pixels
      */
-    value: function hasAlpha() {
+    function hasAlpha() {
       for (var yIndex = 0; yIndex < this.bitmap.height; yIndex++) {
         for (var xIndex = 0; xIndex < this.bitmap.width; xIndex++) {
           var idx = this.bitmap.width * yIndex + xIndex << 2;

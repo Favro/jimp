@@ -6,15 +6,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.isNodePattern = isNodePattern;
-exports.throwError = throwError;
 exports.scan = scan;
 exports.scanIterator = scanIterator;
+exports.throwError = throwError;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _marked =
-/*#__PURE__*/
-_regenerator["default"].mark(scanIterator);
+var _marked = /*#__PURE__*/_regenerator["default"].mark(scanIterator);
 
 function isNodePattern(cb) {
   if (typeof cb === 'undefined') {

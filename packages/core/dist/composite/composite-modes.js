@@ -3,17 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.srcOver = srcOver;
-exports.dstOver = dstOver;
-exports.multiply = multiply;
 exports.add = add;
-exports.screen = screen;
-exports.overlay = overlay;
 exports.darken = darken;
-exports.lighten = lighten;
-exports.hardLight = hardLight;
 exports.difference = difference;
+exports.dstOver = dstOver;
 exports.exclusion = exclusion;
+exports.hardLight = hardLight;
+exports.lighten = lighten;
+exports.multiply = multiply;
+exports.overlay = overlay;
+exports.screen = screen;
+exports.srcOver = srcOver;
 
 function srcOver(src, dst) {
   var ops = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;

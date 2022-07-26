@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.EDGE_CROP = exports.EDGE_WRAP = exports.EDGE_EXTEND = exports.BLEND_EXCLUSION = exports.BLEND_DIFFERENCE = exports.BLEND_HARDLIGHT = exports.BLEND_LIGHTEN = exports.BLEND_DARKEN = exports.BLEND_OVERLAY = exports.BLEND_SCREEN = exports.BLEND_ADD = exports.BLEND_MULTIPLY = exports.BLEND_DESTINATION_OVER = exports.BLEND_SOURCE_OVER = exports.VERTICAL_ALIGN_BOTTOM = exports.VERTICAL_ALIGN_MIDDLE = exports.VERTICAL_ALIGN_TOP = exports.HORIZONTAL_ALIGN_RIGHT = exports.HORIZONTAL_ALIGN_CENTER = exports.HORIZONTAL_ALIGN_LEFT = exports.AUTO = void 0;
+exports.VERTICAL_ALIGN_TOP = exports.VERTICAL_ALIGN_MIDDLE = exports.VERTICAL_ALIGN_BOTTOM = exports.HORIZONTAL_ALIGN_RIGHT = exports.HORIZONTAL_ALIGN_LEFT = exports.HORIZONTAL_ALIGN_CENTER = exports.EDGE_WRAP = exports.EDGE_EXTEND = exports.EDGE_CROP = exports.BLEND_SOURCE_OVER = exports.BLEND_SCREEN = exports.BLEND_OVERLAY = exports.BLEND_MULTIPLY = exports.BLEND_LIGHTEN = exports.BLEND_HARDLIGHT = exports.BLEND_EXCLUSION = exports.BLEND_DIFFERENCE = exports.BLEND_DESTINATION_OVER = exports.BLEND_DARKEN = exports.BLEND_ADD = exports.AUTO = void 0;
 // used to auto resizing etc.
 var AUTO = -1; // Align modes for cover, contain, bit masks
 

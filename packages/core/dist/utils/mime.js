@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getExtension = exports.getType = exports.addType = void 0;
+exports.getType = exports.getExtension = exports.addType = void 0;
 var mimeTypes = {};
 
 var findType = function findType(extension) {
